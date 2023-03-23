@@ -1,5 +1,12 @@
 <template>
   <main>
+    <div id="bar_top" style="background-color: white;">
+      <div id="buttom_menu">
+
+      </div>
+        <img class="logo_uni" src="../assets/logo-unicarioca.png">
+        <img class="logo_educaAI" src="../assets/logo-educai.png">
+    </div>
     <div id="chat_container">
       <div
         v-for="(chat, i) in wrapper"
@@ -18,9 +25,12 @@
         v-model="question"
       ></textarea>
       <button type="submit">
-        <img src="../assets/send.svg" alt="enviar" />
+        <img src="../assets/svg/send.svg" alt="enviar" />
       </button>
     </form>
+    <div id="bar_buttom">
+      
+    </div>
   </main>
 </template>
 <script setup>
