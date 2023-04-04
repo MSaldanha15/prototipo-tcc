@@ -1,8 +1,32 @@
 <template>
-  <div class="chat" ref="currentMessage">
+  <div
+    v-if="chat.isAi"
+    ref="currentMessage"
+    class="chat"
+  >
+    <div
+      
+      class="profile"
+    >
+      <img
+        src="../assets/image/icons/bot.svg"
+        alt="Bot"
+      >
+    </div>
+    <div class="message">
+      {{ chat.value }}
+    </div>
+  </div>
+  <div
+    v-else
+    ref="currentMessage"
+    class="chat__user"
+  >
     <div class="profile">
-      <img v-if="chat.isAi" src="@/assets/svg/bot.svg" alt="" />
-      <img v-else src="@/assets/svg/user.svg" alt="" />
+      <img
+        src="../assets/image/icons/user.svg"
+        alt="Usuario"
+      >
     </div>
     <div class="message">
       {{ chat.value }}

@@ -1,41 +1,42 @@
 <template>
   <main>
-    <div id="bar_top" style="background-color: white;">
-      <div id="buttom_menu">
-
+    <painel />
+    <div class="conversa">
+      <div id="chat_container">
+        <div
+          v-for="(chat, i) in wrapper"
+          :key="i"
+          class="wrapper"
+          :class="{ ai: chat.isAi }"
+        >
+          <Chat
+            :key="i"
+            :chat="chat"
+          />
+        </div>
       </div>
-        <img class="logo_uni" src="../assets/logo-unicarioca.png">
-        <img class="logo_educaAI" src="../assets/logo-educai.png">
-    </div>
-    <div id="chat_container">
-      <div
-        v-for="(chat, i) in wrapper"
-        :key="i"
-        class="wrapper"
-        :class="{ ai: chat.isAi }"
-      >
-        <Chat :chat="chat" :key="i" />
-      </div>
-    </div>
-    <form @submit.prevent="fetchAnswer">
-      <textarea
-        rows="1"
-        cols="1"
-        placeholder="Faça sua pergunta aqui..."
-        v-model="question"
-      ></textarea>
-      <button type="submit">
-        <img src="../assets/svg/send.svg" alt="enviar" />
-      </button>
-    </form>
-    <div id="bar_buttom">
-      
+      <form @submit.prevent="fetchAnswer">
+        <textarea
+          v-model="question"
+          rows="1"
+          cols="1"
+          placeholder="Faça sua pergunta aqui..."
+        />
+        <button type="submit">
+          <img
+            src="../assets/image/icons/send.svg"
+            alt="enviar"
+          >
+        </button>
+      </form>
+      <div id="bar_buttom" />
     </div>
   </main>
 </template>
 <script setup>
 import { ref } from "vue";
 import Chat from "../components/Chat.vue";
+import painel from "../components/Painel.vue";
 
 const question = ref("");
 const wrapper = ref([]);
@@ -50,7 +51,7 @@ const fetchAnswer = async () => {
     });
     wrapper.value.push({
       isAi: true,
-      value: "Loading...",
+      value: "Carregando...",
     });
     const res = await fetch("http://localhost:8000", {
       method: "POST",
@@ -61,9 +62,7 @@ const fetchAnswer = async () => {
         question: question.value,
       }),
     });
-    // console.log(res);
     const data = await res.json();
-    console.log(data);
     const parsedData = data.bot.trim();
     wrapper.value.pop();
     wrapper.value.push({
@@ -77,3 +76,9 @@ const fetchAnswer = async () => {
   }
 };
 </script>
+<style lang="scss">
+.conversa {
+  width: 100%;
+  margin-bottom: 96px;
+}
+</style>
