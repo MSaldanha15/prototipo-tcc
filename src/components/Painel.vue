@@ -1,22 +1,29 @@
 <template>
   <div class="painel">
-    <div class="painel__image">
-      <img
-        class="painel__img"
-        src="../assets/image/icons/perfil.svg"
-      >
+    <div>
+      <div class="painel__image">
+        <img
+          class="painel__img"
+          src="../assets/image/icons/perfil.svg"
+        >
+      </div>
+      <div class="painel__content">
+        <h3 class="painel__text">
+          Nome completo
+        </h3>
+        <h3 class="painel__text">
+          Curso
+        </h3>
+        <h3 class="painel__text">
+          Matricula
+        </h3>
+      </div>
     </div>
-    <div class="painel__content">
-      <h3 class="painel__text">
-        Nome completo
-      </h3>
-      <h3 class="painel__text">
-        Curso
-      </h3>
-      <h3 class="painel__text">
-        Matricula
-      </h3>
-    </div>
+    <RouterLink to="/Config">
+      <button class="painel__config-buttom">
+        Tela de Configuração
+      </button>
+    </RouterLink>
   </div>
 </template>
 <script>
@@ -30,7 +37,9 @@ export default {
   width: 286px;
   height: 751px;
   left: 0px;
-
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   background: #ff7070;
 
   &__image {
@@ -38,7 +47,7 @@ export default {
     flex-direction: column;
     align-items: center;
   }
-  &__img{
+  &__img {
     margin-top: 21px;
   }
   &__content {
@@ -47,8 +56,15 @@ export default {
     flex-direction: column;
     align-items: center;
   }
-  &__text{
-    margin-bottom:35px;
+  &__text {
+    margin-bottom: 35px;
+  }
+  &__config-buttom {
+    width: 100%;
+    padding: 10px 18px;
+    background-color: indianred;
+    border: none;
+    cursor: pointer;
   }
 }
 </style>

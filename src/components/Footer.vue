@@ -81,7 +81,6 @@ export default {
   position: relative;
   width: 100%;
   height: 180px;
-  top: 10px;
   background: #ffffff;
   display: flex;
   flex-direction: row;
@@ -95,13 +94,12 @@ export default {
   &__autores {
     display: flex;
     flex-direction: column;
-    margin-right:74px;
+    margin-right: 74px;
   }
   &__content {
     display: flex;
     flex-direction: row;
     margin-top: 13px;
-    flex-wrap: wrap;
     align-items: center;
   }
   &__image {
