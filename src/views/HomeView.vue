@@ -82,13 +82,20 @@ export default {
           }),
         });
         const data = await res.json();
+        console.log(data)
         const parsedData = data.bot.trim();
         this.wrapper.pop();
         this.wrapper.push({
           isAi: true,
           value: parsedData,
         });
-      } finally {
+      } catch (error) {
+        this.wrapper.pop();
+        this.wrapper.push({
+          isAi: true,
+          value: "Ocorreu um erro com a API da OpenIA, favor verificar a key ou tentar novamente mais tarde!",
+        });
+  } finally {
         this.loading = false;
         this.question = "";
       }

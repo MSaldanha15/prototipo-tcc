@@ -4,7 +4,7 @@ export default [
             "password": "12345",
             "filter": "Mathematics",
             "name": "Carlos Bionde",
-            "registration": ""
+            "registration": "2019101856"
         },
         {
             "email": "dalbuquerque@unicarioca.edu.br",

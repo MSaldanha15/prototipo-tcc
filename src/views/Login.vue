@@ -39,11 +39,6 @@
             Login
           </button>
         </div>
-        <div class="login__container__footer">
-          <button type="button" class="login__home-button">
-            <RouterLink class="login__text" to="/home"> Tela Home </RouterLink>
-          </button>
-        </div>
       </form>
     </div>
   </div>

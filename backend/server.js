@@ -50,7 +50,6 @@ app.post("/login", (req, res) => {
 
   Users.forEach((user) => {
     if (email === user.email && password === user.password) {
-      console.log("Cheguei")
       aux = true;
     }
   });

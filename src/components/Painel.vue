@@ -12,16 +12,13 @@
           Nome completo
         </h3>
         <h3 class="painel__text">
-          Curso
-        </h3>
-        <h3 class="painel__text">
           Matricula
         </h3>
       </div>
     </div>
-    <RouterLink to="/Config">
+    <RouterLink to="/">
       <button class="painel__config-buttom">
-        Tela de Configuração
+        Logout
       </button>
     </RouterLink>
   </div>
