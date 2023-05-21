@@ -4,6 +4,8 @@ import cors from "cors";
 import { Configuration, OpenAIApi } from "openai";
 import Filter from "./filter.js";
 import Users from "./database.js";
+import firebaseApp from "./services/firebase.js"
+import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 dotenv.config();
 const configration = new Configuration({
@@ -17,9 +19,14 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/", async (req, res) => {
+
+  const db = getFirestore(firebaseApp);
+
   try {
     const question = req.body.question;
     const filter = Filter(req.body.filter);
+    const date = new Date()
+    
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
@@ -35,6 +42,18 @@ app.post("/", async (req, res) => {
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
+
+    try {
+      await addDoc(collection(db, "sessao"),{
+        pergunta: question,
+        resposta: response.data.choices[0].text,
+        filtro: filter,
+        dateTime: date
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
   } catch (error) {
     res.status(500).send(error || "Algo deu errado");
   }
